@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Historial de Movimientos</h2>
+<table border="1" width="100%">
+    <tr>
+        <th>Tipo</th>
+        <th>Monto</th>
+        <th>Fecha</th>
+        <th>Descripción</th>
+    </tr>
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t['type'] }}</td>
+        <td>${{ "%.2f"|format(t['amount']) }}</td>
+        <td>{{ t['timestamp'] }}</td>
+        <td>{{ t['description'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<p><a href="{{ url_for('dashboard') }}">Volver</a></p>
+{% endblock %}

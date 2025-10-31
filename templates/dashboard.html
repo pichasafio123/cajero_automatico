@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user %}
+  <h2>Bienvenido, {{ user['username'] }}</h2>
+  <p>Saldo actual: <strong>${{ "%.2f"|format(user['balance']) }}</strong></p>
+  <hr>
+  <a href="{{ url_for('deposit') }}"><button>Depositar</button></a>
+  <a href="{{ url_for('withdraw') }}"><button>Retirar</button></a>
+  <a href="{{ url_for('history') }}"><button>Historial</button></a>
+  <a href="{{ url_for('logout') }}"><button>Salir</button></a>
+{% else %}
+  <p>Error: usuario no encontrado. Por favor <a href="{{ url_for('index') }}">inicia sesión</a>.</p>
+{% endif %}
+{% endblock %}
